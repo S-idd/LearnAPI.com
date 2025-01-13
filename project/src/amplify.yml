@@ -3,15 +3,14 @@ frontend:
   phases:
     preBuild:
       commands:
-        - cd Assigment-no1
         - npm install
     build:
       commands:
         - npm run build
   artifacts:
-    baseDirectory: Assigment-no1/build
+    baseDirectory: dist  # Ensure this matches your output folder name
     files:
       - '**/*'
   cache:
     paths:
-      - Assigment-no1/node_modules/**/*
+      - node_modules/**/*  
