@@ -26,7 +26,111 @@ const challenges: Challenge[] = [
     code: '@RestController\npublic class HelloController {\n    ___("/hello")\n    public String hello() {\n        return "Hello, World!";\n    }\n}',
     solution: '@RestController\npublic class HelloController {\n    @RequestMapping("/hello")\n    public String hello() {\n        return "Hello, World!";\n    }\n}',
     hint: 'Use @RequestMapping to map web requests to methods'
-  }
+  },
+  {
+    id: 3,
+    title: '@GetMapping',
+    description: 'Use a more specific annotation to handle GET requests at "/welcome".',
+    code: '@RestController\npublic class WelcomeController {\n    ___("/welcome")\n    public String welcome() {\n        return "Welcome!";\n    }\n}',
+    solution: '@RestController\npublic class WelcomeController {\n    @GetMapping("/welcome")\n    public String welcome() {\n        return "Welcome!";\n    }\n}',
+    hint: 'Use @GetMapping for GET request handling.'
+  },
+  {
+    id: 4,
+    title: '@PostMapping',
+    description: 'Map a method to handle POST requests at "/submit".',
+    code: '@RestController\npublic class SubmitController {\n    ___("/submit")\n    public String submit() {\n        return "Submitted!";\n    }\n}',
+    solution: '@RestController\npublic class SubmitController {\n    @PostMapping("/submit")\n    public String submit() {\n        return "Submitted!";\n    }\n}',
+    hint: 'Use @PostMapping for POST request handling.'
+  },
+  {
+    id: 5,
+    title: '@PathVariable',
+    description: 'Extract a dynamic value from the URL path and return it.',
+    code: '@RestController\npublic class GreetingController {\n    @GetMapping("/greet/{name}")\n    public String greet(___) {\n        return "Hello, " + name + "!";\n    }\n}',
+    solution: '@RestController\npublic class GreetingController {\n    @GetMapping("/greet/{name}")\n    public String greet(@PathVariable String name) {\n        return "Hello, " + name + "!";\n    }\n}',
+    hint: 'Use @PathVariable to bind a URL template variable to a method parameter.'
+  },
+  {
+    id: 6,
+    title: '@RequestBody',
+    description: 'Create a method that accepts a JSON payload representing a User object.',
+    code: '@RestController\npublic class UserController {\n    @PostMapping("/user")\n    public String createUser(___) {\n        return "User created: " + user.getName();\n    }\n}',
+    solution: '@RestController\npublic class UserController {\n    @PostMapping("/user")\n    public String createUser(@RequestBody User user) {\n        return "User created: " + user.getName();\n    }\n}',
+    hint: 'Use @RequestBody to bind the body of a request to a method parameter.'
+  },
+  {
+    id: 7,
+    title: '@RequestParam',
+    description: 'Handle a request with query parameters.',
+    code: '@RestController\npublic class SearchController {\n    @GetMapping("/search")\n    public String search(___) {\n        return "Searching for " + query;\n    }\n}',
+    solution: '@RestController\npublic class SearchController {\n    @GetMapping("/search")\n    public String search(@RequestParam String query) {\n        return "Searching for " + query;\n    }\n}',
+    hint: 'Use @RequestParam to extract query parameters from a request.'
+  },
+  {
+    id: 8,
+    title: '@PutMapping',
+    description: 'Create a method to handle PUT requests to update user information.',
+    code: '@RestController\npublic class UpdateController {\n    ___("/user")\n    public String updateUser() {\n        return "User updated!";\n    }\n}',
+    solution: '@RestController\npublic class UpdateController {\n    @PutMapping("/user")\n    public String updateUser() {\n        return "User updated!";\n    }\n}',
+    hint: 'Use @PutMapping to map PUT requests to a method.'
+  },
+  {
+    id: 9,
+    title: '@DeleteMapping',
+    description: 'Map a method to handle DELETE requests at "/user/{id}".',
+    code: '@RestController\npublic class DeleteController {\n    ___("/user/{id}")\n    public String deleteUser(___) {\n        return "User deleted with ID: " + id;\n    }\n}',
+    solution: '@RestController\npublic class DeleteController {\n    @DeleteMapping("/user/{id}")\n    public String deleteUser(@PathVariable int id) {\n        return "User deleted with ID: " + id;\n    }\n}',
+    hint: 'Use @DeleteMapping and @PathVariable together.'
+  },
+  {
+    id: 10,
+    title: '@ResponseStatus',
+    description: 'Set a custom HTTP status for the response.',
+    code: '@RestController\npublic class StatusController {\n    @DeleteMapping("/status")\n    ___(___)\n    public void setStatus() {\n    }\n}',
+    solution: '@RestController\npublic class StatusController {\n    @DeleteMapping("/status")\n    @ResponseStatus(HttpStatus.NO_CONTENT)\n    public void setStatus() {\n    }\n}',
+    hint: 'Use @ResponseStatus to set a custom HTTP status code.'
+  },
+  {
+    id: 11,
+    title: '@ExceptionHandler',
+    description: 'Handle exceptions using a method annotated with @ExceptionHandler.',
+    code: '@RestController\npublic class ErrorHandler {\n    ___(Exception.class)\n    public String handleError(Exception ex) {\n        return "Error occurred: " + ex.getMessage();\n    }\n}',
+    solution: '@RestController\npublic class ErrorHandler {\n    @ExceptionHandler(Exception.class)\n    public String handleError(Exception ex) {\n        return "Error occurred: " + ex.getMessage();\n    }\n}',
+    hint: 'Use @ExceptionHandler to define methods for handling exceptions.'
+  },
+  {
+    id: 12,
+    title: '@CrossOrigin',
+    description: 'Allow cross-origin requests on a method.',
+    code: '@RestController\npublic class CorsController {\n    ___\n    @GetMapping("/cors")\n    public String cors() {\n        return "CORS enabled!";\n    }\n}',
+    solution: '@RestController\npublic class CorsController {\n    @CrossOrigin\n    @GetMapping("/cors")\n    public String cors() {\n        return "CORS enabled!";\n    }\n}',
+    hint: 'Use @CrossOrigin to enable cross-origin requests.'
+  },
+  {
+    id: 13,
+    title: '@ResponseBody',
+    description: 'Return the response body directly without using a view.',
+    code: '___\npublic class BodyController {\n    @GetMapping("/body")\n    public String body() {\n        return "Response body content";\n    }\n}',
+    solution: '@RestController\npublic class BodyController {\n    @GetMapping("/body")\n    public String body() {\n        return "Response body content";\n    }\n}',
+    hint: 'Use @ResponseBody or @RestController.'
+  },
+  {
+    id: 14,
+    title: '@ControllerAdvice',
+    description: 'Create a global exception handler using @ControllerAdvice.',
+    code: '@___\npublic class GlobalExceptionHandler {\n    @ExceptionHandler(RuntimeException.class)\n    public String handleRuntimeError(RuntimeException ex) {\n        return "Runtime error: " + ex.getMessage();\n    }\n}',
+    solution: '@ControllerAdvice\npublic class GlobalExceptionHandler {\n    @ExceptionHandler(RuntimeException.class)\n    public String handleRuntimeError(RuntimeException ex) {\n        return "Runtime error: " + ex.getMessage();\n    }\n}',
+    hint: 'Use @ControllerAdvice for global exception handling.'
+  },
+  {
+    id: 15,
+    title: '@ModelAttribute',
+    description: 'Bind a form input model attribute to a method parameter.',
+    code: '@RestController\npublic class FormController {\n    @PostMapping("/form")\n    public String processForm(___) {\n        return "Processed form for " + user.getName();\n    }\n}',
+    solution: '@RestController\npublic class FormController {\n    @PostMapping("/form")\n    public String processForm(@ModelAttribute User user) {\n        return "Processed form for " + user.getName();\n    }\n}',
+    hint: 'Use @ModelAttribute to bind form data.'
+  },
 ];
 
 function LearnByDoing({ onComplete }: { onComplete: (badge: string) => void }) {
@@ -35,8 +139,10 @@ function LearnByDoing({ onComplete }: { onComplete: (badge: string) => void }) {
   const [showHint, setShowHint] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
+  const normalizeCode = (code: string) => code.replace(/\s+/g, ' ').trim();
+
   const checkSolution = () => {
-    const correct = userCode.trim() === challenges[currentChallenge].solution.trim();
+    const correct = normalizeCode(userCode) === normalizeCode(challenges[currentChallenge].solution);
     setIsCorrect(correct);
     if (correct) {
       onComplete(`challenge_${currentChallenge + 1}`);
