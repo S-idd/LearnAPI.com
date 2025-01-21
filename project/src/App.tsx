@@ -17,10 +17,10 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100">
-      <nav className="bg-white shadow-lg">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 overflow-x-hidden">
+      <nav className="bg-white shadow-lg overflow-x-auto">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between h-16">
+          <div className="flex flex-nowrap justify-between h-16">
             <div className="flex space-x-8">
               <button
                 onClick={() => setCurrentPage('home')}
@@ -67,7 +67,7 @@ function App() {
         </div>
       </nav>
 
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <main className="max-w-7xl mx-auto px-4 py-8 overflow-y-auto">
         {currentPage === 'home' && <HomePage />}
         {currentPage === 'learn' && <LearnByDoing onComplete={addBadge} />}
         {currentPage === 'quiz' && <Quiz onComplete={addBadge} />}
