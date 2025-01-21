@@ -66,7 +66,6 @@ function App() {
           </div>
         </div>
       </nav>
-
       <main className="max-w-7xl mx-auto px-4 py-8 overflow-y-auto">
         {currentPage === 'home' && <HomePage />}
         {currentPage === 'learn' && <LearnByDoing onComplete={addBadge} />}
