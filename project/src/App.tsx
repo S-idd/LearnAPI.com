@@ -10,8 +10,12 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [earnedBadges, setEarnedBadges] = useState<string[]>([]);
 
+
+
   const addBadge = (badge: string) => {
+    // Check if the badge is not already earned
     if (!earnedBadges.includes(badge)) {
+      // Add the new badge to the earned badges list
       setEarnedBadges([...earnedBadges, badge]);
     }
   };

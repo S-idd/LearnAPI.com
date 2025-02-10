@@ -33,6 +33,126 @@ const questions: Question[] = [
     ],
     correctAnswer: 2,
     explanation: "@Autowired is used for automatic dependency injection in Spring Boot!"
+  },
+  {
+    "id": 3,
+    "question": "Which annotation is used to mark a class as a Spring Boot application?",
+    "options": [
+      "@SpringApplication",
+      "@SpringBootApplication",
+      "@SpringConfig",
+      "@Configuration"
+    ],
+    "correctAnswer": 1,
+    "explanation": "@SpringBootApplication is used to mark a class as the main entry point of a Spring Boot application!"
+  },
+  {
+    "id": 4,
+    "question": "Which annotation is used to define a RESTful web service in Spring Boot?",
+    "options": [
+      "@Controller",
+      "@RestController",
+      "@WebService",
+      "@RequestMapping"
+    ],
+    "correctAnswer": 1,
+    "explanation": "@RestController is used to define a RESTful web service in Spring Boot!"
+  },
+  {
+    "id": 5,
+    "question": "Which annotation is used to map an HTTP GET request in Spring Boot?",
+    "options": [
+      "@PostMapping",
+      "@GetMapping",
+      "@RequestMapping",
+      "@PutMapping"
+    ],
+    "correctAnswer": 1,
+    "explanation": "@GetMapping is used to map an HTTP GET request in Spring Boot!"
+  },
+  {
+    "id": 6,
+    "question": "Which dependency is required to use Spring Boot with JPA?",
+    "options": [
+      "spring-boot-starter-web",
+      "spring-boot-starter-data-jpa",
+      "spring-boot-starter-security",
+      "spring-boot-starter-test"
+    ],
+    "correctAnswer": 1,
+    "explanation": "spring-boot-starter-data-jpa is required for using Spring Boot with JPA!"
+  },
+  {
+    "id": 7,
+    "question": "Which file is used to configure Spring Boot application properties?",
+    "options": [
+      "application.json",
+      "config.yaml",
+      "application.properties",
+      "spring-config.xml"
+    ],
+    "correctAnswer": 2,
+    "explanation": "application.properties is used to configure Spring Boot application settings!"
+  },
+  {
+    "id": 8,
+    "question": "Which annotation is used to specify a method as a scheduled task in Spring Boot?",
+    "options": [
+      "@Scheduled",
+      "@CronJob",
+      "@Timer",
+      "@EnableScheduling"
+    ],
+    "correctAnswer": 0,
+    "explanation": "@Scheduled is used to define a method as a scheduled task in Spring Boot!"
+  },
+  {
+    "id": 9,
+    "question": "Which annotation is used to handle exceptions globally in Spring Boot?",
+    "options": [
+      "@ExceptionHandler",
+      "@GlobalExceptionHandler",
+      "@ControllerAdvice",
+      "@ErrorHandler"
+    ],
+    "correctAnswer": 2,
+    "explanation": "@ControllerAdvice is used to handle exceptions globally in Spring Boot!"
+  },
+  {
+    "id": 10,
+    "question": "Which dependency is required to use Spring Boot with MySQL?",
+    "options": [
+      "mysql-connector-java",
+      "spring-boot-starter-mysql",
+      "spring-boot-starter-data-mysql",
+      "jdbc-mysql-starter"
+    ],
+    "correctAnswer": 0,
+    "explanation": "mysql-connector-java is required to use Spring Boot with MySQL!"
+  },
+  {
+    "id": 11,
+    "question": "Which annotation is used to enable cross-origin requests in Spring Boot?",
+    "options": [
+      "@EnableCORS",
+      "@CrossOrigin",
+      "@CorsMapping",
+      "@AllowOrigin"
+    ],
+    "correctAnswer": 1,
+    "explanation": "@CrossOrigin is used to enable cross-origin requests in Spring Boot!"
+  },
+  {
+    "id": 12,
+    "question": "Which annotation is used to enable transaction management in Spring Boot?",
+    "options": [
+      "@Transactional",
+      "@EnableTransactionManagement",
+      "@Transaction",
+      "@ManageTransaction"
+    ],
+    "correctAnswer": 0,
+    "explanation": "@Transactional is used to enable transaction management in Spring Boot!"
   }
 ];
 

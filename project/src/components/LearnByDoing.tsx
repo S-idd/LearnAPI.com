@@ -131,16 +131,71 @@ const challenges: Challenge[] = [
     solution: '@RestController\npublic class FormController {\n    @PostMapping("/form")\n    public String processForm(@ModelAttribute User user) {\n        return "Processed form for " + user.getName();\n    }\n}',
     hint: 'Use @ModelAttribute to bind form data.'
   },
+  {
+    "id": 16,
+    "title": "@Service",
+    "description": "Marks a class as a service component in the Spring application.",
+    "code": "@RestController\npublic class UserController {\n    private final UserService userService;\n    \n    public UserController(UserService userService) {\n        this.userService = userService;\n    }\n    \n    @GetMapping(\"/users/{id}\")\n    public User getUserById(@PathVariable Long id) {\n        return userService.getUserById(id);\n    }\n}",
+    "solution": "@Service\npublic class UserService {\n    public User getUserById(Long id) {\n        return new User(id, \"John Doe\");\n    }\n}",
+    "hint": "Use @Service to define a business logic component."
+  },
+  {
+    "id": 17,
+    "title": "@Repository",
+    "description": "Indicates that a class is a repository and manages database operations.",
+    "code": "@Service\npublic class UserService {\n    private final UserRepository userRepository;\n    \n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n    \n    public User findUser(Long id) {\n        return userRepository.findById(id);\n    }\n}",
+    "solution": "@Repository\npublic class UserRepository {\n    public User findById(Long id) {\n        return new User(id, \"John Doe\");\n    }\n}",
+    "hint": "Use @Repository to define a database access component."
+  },
+  {
+    "id": 18,
+    "title": "@Component",
+    "description": "Marks a generic Spring-managed component.",
+    "code": "@RestController\npublic class MessageController {\n    private final MessageGenerator messageGenerator;\n    \n    public MessageController(MessageGenerator messageGenerator) {\n        this.messageGenerator = messageGenerator;\n    }\n    \n    @GetMapping(\"/message\")\n    public String getMessage() {\n        return messageGenerator.generate();\n    }\n}",
+    "solution": "@Component\npublic class MessageGenerator {\n    public String generate() {\n        return \"Hello from Component!\";\n    }\n}",
+    "hint": "Use @Component for generic components that don't fit into @Service or @Repository."
+  },
+  {
+    "id": 19,
+    "title": "@Bean",
+    "description": "Defines a bean in a Spring configuration class.",
+    "code": "@Configuration\npublic class AppConfig {\n    public UserService userService() {\n        return new UserService();\n    }\n}",
+    "solution": "@Configuration\npublic class AppConfig {\n    @Bean\n    public UserService userService() {\n        return new UserService();\n    }\n}",
+    "hint": "Use @Bean inside @Configuration classes to define beans."
+  }
 ];
 
+/**
+ * LearnByDoing component to help users learn Spring Boot annotations.
+ *
+ * State:
+ * - currentChallenge: number, the current challenge to be rendered.
+ * - userCode: string, the user's code.
+ * - showHint: boolean, whether to show the hint for the current challenge.
+ * - isCorrect: boolean | null, whether the user's code is correct.
+ *
+ * Props:
+ * - onComplete: (badge: string) => void, a callback to be called when a challenge is completed.
+ *
+ * @returns {JSX.Element} The rendered LearnByDoing component.
+ */
 function LearnByDoing({ onComplete }: { onComplete: (badge: string) => void }) {
   const [currentChallenge, setCurrentChallenge] = useState(0);
   const [userCode, setUserCode] = useState(challenges[0].code);
   const [showHint, setShowHint] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
+  /**
+   * Normalizes the code by trimming and replacing multiple spaces with a single space.
+   * @param code - The code to normalize.
+   * @returns The normalized code.
+   */
   const normalizeCode = (code: string) => code.replace(/\s+/g, ' ').trim();
 
+  /**
+   * Checks the user's solution against the correct solution.
+   * Sets the isCorrect state based on the comparison.
+   */
   const checkSolution = () => {
     const correct = normalizeCode(userCode) === normalizeCode(challenges[currentChallenge].solution);
     setIsCorrect(correct);
@@ -149,6 +204,9 @@ function LearnByDoing({ onComplete }: { onComplete: (badge: string) => void }) {
     }
   };
 
+  /**
+   * Advances to the next challenge. Resets the user code, isCorrect, and showHint states.
+   */
   const nextChallenge = () => {
     if (currentChallenge < challenges.length - 1) {
       setCurrentChallenge(prev => prev + 1);

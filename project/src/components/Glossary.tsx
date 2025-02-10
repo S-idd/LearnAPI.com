@@ -133,17 +133,34 @@ const annotations: Annotation[] = [
   }
 ];
 
-function Glossary() {
+/**
+ * Glossary component to display Spring Boot annotations.
+ *
+ * The component allows the user to search for annotations by name or description,
+ * and filter the results by category.
+ *
+ * @example
+ * <Glossary />
+ *
+ * @returns {JSX.Element} The rendered Glossary component.
+ */
+function Glossary(): JSX.Element {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
+  /**
+   * Returns a filtered list of annotations based on the search term and category.
+   */
   const filteredAnnotations = annotations.filter(annotation => {
     const matchesSearch = annotation.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         annotation.description.toLowerCase().includes(searchTerm.toLowerCase());
+      annotation.description.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'all' || annotation.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
+  /**
+   * Returns a list of categories for the annotations.
+   */
   const categories = ['all', ...new Set(annotations.map(a => a.category))];
 
   return (
@@ -168,11 +185,10 @@ function Glossary() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-lg capitalize ${
-                  selectedCategory === category
+                className={`px-4 py-2 rounded-lg capitalize ${selectedCategory === category
                     ? 'bg-pink-500 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                  }`}
               >
                 {category}
               </button>
