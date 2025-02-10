@@ -10,6 +10,8 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',  // Required for testing React components
-    setupFiles: './setupTests.ts',
+    setupFiles: '../project/src/setupTests.ts',
+    //project/src/setupTests.ts
+    //'../src/setupTests.ts'
   },
 });

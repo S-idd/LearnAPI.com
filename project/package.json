@@ -9,7 +9,8 @@
     "build": "vite build",
     "start": "vite",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
