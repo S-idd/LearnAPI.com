@@ -25,7 +25,7 @@ const allBadges = [
  *
  * @returns {JSX.Element} The rendered Badges component.
  */
-function Badges({ earnedBadges }: { earnedBadges: string[] }) {
+function Badges({ earnedBadges }: { earnedBadges: string[] }): JSX.Element {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {allBadges.map((badge) => {

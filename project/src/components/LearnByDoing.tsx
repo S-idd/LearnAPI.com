@@ -132,36 +132,36 @@ const challenges: Challenge[] = [
     hint: 'Use @ModelAttribute to bind form data.'
   },
   {
-    "id": 16,
-    "title": "@Service",
-    "description": "Marks a class as a service component in the Spring application.",
-    "code": "@RestController\npublic class UserController {\n    private final UserService userService;\n    \n    public UserController(UserService userService) {\n        this.userService = userService;\n    }\n    \n    @GetMapping(\"/users/{id}\")\n    public User getUserById(@PathVariable Long id) {\n        return userService.getUserById(id);\n    }\n}",
-    "solution": "@Service\npublic class UserService {\n    public User getUserById(Long id) {\n        return new User(id, \"John Doe\");\n    }\n}",
-    "hint": "Use @Service to define a business logic component."
+    id: 16,
+    title: "@Service",
+    description: "Marks a class as a service component in the Spring application.",
+    code: "@RestController\npublic class UserController {\n    private final UserService userService;\n    \n    public UserController(UserService userService) {\n        this.userService = userService;\n    }\n    \n    @GetMapping(\"/users/{id}\")\n    public User getUserById(@PathVariable Long id) {\n        return userService.getUserById(id);\n    }\n}",
+    solution: "@Service\npublic class UserService {\n    public User getUserById(Long id) {\n        return new User(id, \"John Doe\");\n    }\n}",
+    hint: "Use @Service to define a business logic component."
   },
   {
-    "id": 17,
-    "title": "@Repository",
-    "description": "Indicates that a class is a repository and manages database operations.",
-    "code": "@Service\npublic class UserService {\n    private final UserRepository userRepository;\n    \n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n    \n    public User findUser(Long id) {\n        return userRepository.findById(id);\n    }\n}",
-    "solution": "@Repository\npublic class UserRepository {\n    public User findById(Long id) {\n        return new User(id, \"John Doe\");\n    }\n}",
-    "hint": "Use @Repository to define a database access component."
+    id: 17,
+    title: "@Repository",
+    description: "Indicates that a class is a repository and manages database operations.",
+    code: "@Service\npublic class UserService {\n    private final UserRepository userRepository;\n    \n    public UserService(UserRepository userRepository) {\n        this.userRepository = userRepository;\n    }\n    \n    public User findUser(Long id) {\n        return userRepository.findById(id);\n    }\n}",
+    solution: "@Repository\npublic class UserRepository {\n    public User findById(Long id) {\n        return new User(id, \"John Doe\");\n    }\n}",
+    hint: "Use @Repository to define a database access component."
   },
   {
-    "id": 18,
-    "title": "@Component",
-    "description": "Marks a generic Spring-managed component.",
-    "code": "@RestController\npublic class MessageController {\n    private final MessageGenerator messageGenerator;\n    \n    public MessageController(MessageGenerator messageGenerator) {\n        this.messageGenerator = messageGenerator;\n    }\n    \n    @GetMapping(\"/message\")\n    public String getMessage() {\n        return messageGenerator.generate();\n    }\n}",
-    "solution": "@Component\npublic class MessageGenerator {\n    public String generate() {\n        return \"Hello from Component!\";\n    }\n}",
-    "hint": "Use @Component for generic components that don't fit into @Service or @Repository."
+    id: 18,
+    title: "@Component",
+    description: "Marks a generic Spring-managed component.",
+    code: "@RestController\npublic class MessageController {\n    private final MessageGenerator messageGenerator;\n    \n    public MessageController(MessageGenerator messageGenerator) {\n        this.messageGenerator = messageGenerator;\n    }\n    \n    @GetMapping(\"/message\")\n    public String getMessage() {\n        return messageGenerator.generate();\n    }\n}",
+    solution: "@Component\npublic class MessageGenerator {\n    public String generate() {\n        return \"Hello from Component!\";\n    }\n}",
+    hint: "Use @Component for generic components that don't fit into @Service or @Repository."
   },
   {
-    "id": 19,
-    "title": "@Bean",
-    "description": "Defines a bean in a Spring configuration class.",
-    "code": "@Configuration\npublic class AppConfig {\n    public UserService userService() {\n        return new UserService();\n    }\n}",
-    "solution": "@Configuration\npublic class AppConfig {\n    @Bean\n    public UserService userService() {\n        return new UserService();\n    }\n}",
-    "hint": "Use @Bean inside @Configuration classes to define beans."
+    id: 19,
+    title: "@Bean",
+    description: "Defines a bean in a Spring configuration class.",
+    code: "@Configuration\npublic class AppConfig {\n    public UserService userService() {\n        return new UserService();\n    }\n}",
+    solution: "@Configuration\npublic class AppConfig {\n    @Bean\n    public UserService userService() {\n        return new UserService();\n    }\n}",
+    hint: "Use @Bean inside @Configuration classes to define beans."
   }
 ];
 
@@ -223,7 +223,7 @@ function LearnByDoing({ onComplete }: { onComplete: (badge: string) => void }) {
           Challenge {currentChallenge + 1}: {challenges[currentChallenge].title}
         </h2>
         <p className="text-lg text-gray-600 mb-4">{challenges[currentChallenge].description}</p>
-        
+
         <div className="mb-4">
           <textarea
             value={userCode}

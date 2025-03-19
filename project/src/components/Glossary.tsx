@@ -8,6 +8,11 @@ interface Annotation {
   category: string;
 }
 
+
+/**
+ * 
+ * This is An Array That Contains All Spring Boot Annotations
+ */
 const annotations: Annotation[] = [
   // Web Annotations
   {
@@ -144,6 +149,11 @@ const annotations: Annotation[] = [
  *
  * @returns {JSX.Element} The rendered Glossary component.
  */
+
+/**
+ * 
+ * It's An Function for  glossary component that allows users to search for annotations by name or description, and filter the results by category.
+ */
 function Glossary(): JSX.Element {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -186,8 +196,8 @@ function Glossary(): JSX.Element {
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-lg capitalize ${selectedCategory === category
-                    ? 'bg-pink-500 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-pink-500 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
               >
                 {category}

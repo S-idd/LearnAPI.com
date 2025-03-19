@@ -165,7 +165,7 @@ function Quiz({ onComplete }: { onComplete: (badge: string) => void }) {
   const handleAnswer = (answerIndex: number) => {
     setSelectedAnswer(answerIndex);
     setShowExplanation(true);
-    
+
     if (answerIndex === questions[currentQuestion].correctAnswer) {
       setScore(prev => prev + 1);
       onComplete(`quiz_${currentQuestion + 1}`);
@@ -200,13 +200,12 @@ function Quiz({ onComplete }: { onComplete: (badge: string) => void }) {
                 key={index}
                 onClick={() => handleAnswer(index)}
                 disabled={showExplanation}
-                className={`w-full p-4 text-left rounded-lg transition-colors ${
-                  selectedAnswer === index
-                    ? index === questions[currentQuestion].correctAnswer
-                      ? 'bg-green-100 border-green-500'
-                      : 'bg-red-100 border-red-500'
-                    : 'bg-gray-50 hover:bg-gray-100'
-                } ${showExplanation ? 'cursor-default' : 'cursor-pointer'}`}
+                className={`w-full p-4 text-left rounded-lg transition-colors ${selectedAnswer === index
+                  ? index === questions[currentQuestion].correctAnswer
+                    ? 'bg-green-100 border-green-500'
+                    : 'bg-red-100 border-red-500'
+                  : 'bg-gray-50 hover:bg-gray-100'
+                  } ${showExplanation ? 'cursor-default' : 'cursor-pointer'}`}
               >
                 {option}
               </button>
@@ -215,22 +214,20 @@ function Quiz({ onComplete }: { onComplete: (badge: string) => void }) {
         </div>
 
         {showExplanation && (
-          <div className={`p-4 rounded-lg mb-4 ${
-            selectedAnswer === questions[currentQuestion].correctAnswer
-              ? 'bg-green-100'
-              : 'bg-red-100'
-          }`}>
+          <div className={`p-4 rounded-lg mb-4 ${selectedAnswer === questions[currentQuestion].correctAnswer
+            ? 'bg-green-100'
+            : 'bg-red-100'
+            }`}>
             <div className="flex items-center mb-2">
               {selectedAnswer === questions[currentQuestion].correctAnswer ? (
                 <CheckCircle className="w-6 h-6 text-green-500 mr-2" />
               ) : (
                 <XCircle className="w-6 h-6 text-red-500 mr-2" />
               )}
-              <span className={`font-semibold ${
-                selectedAnswer === questions[currentQuestion].correctAnswer
-                  ? 'text-green-700'
-                  : 'text-red-700'
-              }`}>
+              <span className={`font-semibold ${selectedAnswer === questions[currentQuestion].correctAnswer
+                ? 'text-green-700'
+                : 'text-red-700'
+                }`}>
                 {selectedAnswer === questions[currentQuestion].correctAnswer
                   ? 'Correct!'
                   : 'Not quite right!'}

@@ -4,7 +4,7 @@ import { describe, it, expect } from 'vitest';
 
 describe('Quiz Component', () => {
   it('renders the quiz title', () => {
-    render(<Quiz onComplete={(badge: string) => {}} />);
+    render(<Quiz onComplete={(badge) => {}} />);
     expect(screen.getByText(/Quiz/i)).toBeInTheDocument();
   });
 });
