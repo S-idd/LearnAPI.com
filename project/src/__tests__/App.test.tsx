@@ -8,6 +8,27 @@ vi.mock('../components/HomePage', () => ({
 }));
 
 vi.mock('../components/LearnByDoing', () => ({
+/**
+ * Mock LearnByDoing component for testing.
+ *
+ * Props:
+ * - onComplete: (badge: string) => void
+ *   A callback function that's invoked when the component is clicked, simulating
+ *   the completion of a learning challenge and awarding a 'learnBadge'.
+ *
+ * @returns {JSX.Element} The mocked LearnByDoing component.
+ */
+
+  /**
+   * Mock LearnByDoing component for testing.
+   *
+   * Props:
+   * - onComplete: (badge: string) => void
+   *   A callback function that's invoked when the component is clicked, simulating
+   *   the completion of a learning challenge and awarding a 'learnBadge'.
+   *
+   * @returns {JSX.Element} The mocked LearnByDoing component.
+   */
   default: ({ onComplete }: { onComplete: (badge: string) => void }) => (
     <div data-testid="learn-by-doing" onClick={() => onComplete && onComplete('learnBadge')}>
       Mock LearnByDoing
@@ -16,6 +37,38 @@ vi.mock('../components/LearnByDoing', () => ({
 }));
 
 vi.mock('../components/Quiz', () => ({
+/**
+ * Mock Quiz component for testing.
+ *
+ * Props:
+ * - onComplete: (badge: string) => void
+ *   A callback function that's invoked when the component is clicked, simulating
+ *   the completion of a quiz and awarding a 'quizBadge'.
+ *
+ * @returns {JSX.Element} The mocked Quiz component.
+ */
+
+/**
+ * Mock Quiz component for testing.
+ *
+ * Props:
+ * - onComplete: (badge: string) => void
+ *   A callback function that's invoked when the component is clicked, simulating
+ *   the completion of a quiz and awarding a 'quizBadge'.
+ *
+ * @returns {JSX.Element} The mocked Quiz component.
+ */
+
+  /**
+   * Mock Quiz component for testing.
+   *
+   * Props:
+   * - onComplete: (badge: string) => void
+   *   A callback function that's invoked when the component is clicked, simulating
+   *   the completion of a quiz and awarding a 'quizBadge'.
+   *
+   * @returns {JSX.Element} The mocked Quiz component.
+   */
   default: ({ onComplete }: { onComplete: (badge: string) => void }) => (
     <div data-testid="quiz" onClick={() => onComplete && onComplete('quizBadge')}>
       Mock Quiz
@@ -24,6 +77,25 @@ vi.mock('../components/Quiz', () => ({
 }));
 
 vi.mock('../components/Badges', () => ({
+/**
+ * Mock Badges component for testing.
+ *
+ * Props:
+ * - earnedBadges: string[]
+ *   An array of strings representing the earned badges, which are displayed in the mocked component.
+ *
+ * @returns {JSX.Element} The mocked Badges component displaying the earned badges.
+ */
+
+  /**
+   * Mock Badges component for testing.
+   *
+   * Props:
+   * - earnedBadges: string[]
+   *   An array of strings representing the earned badges, which are displayed in the mocked component.
+   *
+   * @returns {JSX.Element} The mocked Badges component displaying the earned badges.
+   */
   default: ({ earnedBadges }: { earnedBadges: string[] }) => (
     <div data-testid="badges">Mock Badges: {earnedBadges.join(', ')}</div>
   ),

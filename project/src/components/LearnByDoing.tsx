@@ -10,7 +10,7 @@ interface Challenge {
   hint: string;
 }
 
-const challenges: Challenge[] = [
+export const challenges: Challenge[] = [
   {
     id: 1,
     title: '@RestController',
@@ -165,37 +165,16 @@ const challenges: Challenge[] = [
   }
 ];
 
-/**
- * LearnByDoing component to help users learn Spring Boot annotations.
- *
- * State:
- * - currentChallenge: number, the current challenge to be rendered.
- * - userCode: string, the user's code.
- * - showHint: boolean, whether to show the hint for the current challenge.
- * - isCorrect: boolean | null, whether the user's code is correct.
- *
- * Props:
- * - onComplete: (badge: string) => void, a callback to be called when a challenge is completed.
- *
- * @returns {JSX.Element} The rendered LearnByDoing component.
- */
+
+// Rest of the file remains unchanged
 function LearnByDoing({ onComplete }: { onComplete: (badge: string) => void }) {
   const [currentChallenge, setCurrentChallenge] = useState(0);
   const [userCode, setUserCode] = useState(challenges[0].code);
   const [showHint, setShowHint] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
-  /**
-   * Normalizes the code by trimming and replacing multiple spaces with a single space.
-   * @param code - The code to normalize.
-   * @returns The normalized code.
-   */
   const normalizeCode = (code: string) => code.replace(/\s+/g, ' ').trim();
 
-  /**
-   * Checks the user's solution against the correct solution.
-   * Sets the isCorrect state based on the comparison.
-   */
   const checkSolution = () => {
     const correct = normalizeCode(userCode) === normalizeCode(challenges[currentChallenge].solution);
     setIsCorrect(correct);
@@ -204,9 +183,6 @@ function LearnByDoing({ onComplete }: { onComplete: (badge: string) => void }) {
     }
   };
 
-  /**
-   * Advances to the next challenge. Resets the user code, isCorrect, and showHint states.
-   */
   const nextChallenge = () => {
     if (currentChallenge < challenges.length - 1) {
       setCurrentChallenge(prev => prev + 1);
@@ -223,7 +199,6 @@ function LearnByDoing({ onComplete }: { onComplete: (badge: string) => void }) {
           Challenge {currentChallenge + 1}: {challenges[currentChallenge].title}
         </h2>
         <p className="text-lg text-gray-600 mb-4">{challenges[currentChallenge].description}</p>
-
         <div className="mb-4">
           <textarea
             value={userCode}
@@ -231,7 +206,6 @@ function LearnByDoing({ onComplete }: { onComplete: (badge: string) => void }) {
             className="w-full h-48 p-4 font-mono text-sm bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500"
           />
         </div>
-
         <div className="flex space-x-4">
           <button
             onClick={checkSolution}
@@ -246,7 +220,6 @@ function LearnByDoing({ onComplete }: { onComplete: (badge: string) => void }) {
             Show Hint
           </button>
         </div>
-
         {isCorrect !== null && (
           <div className={`mt-4 p-4 rounded-lg flex items-center ${isCorrect ? 'bg-green-100' : 'bg-red-100'}`}>
             {isCorrect ? (
@@ -262,13 +235,11 @@ function LearnByDoing({ onComplete }: { onComplete: (badge: string) => void }) {
             )}
           </div>
         )}
-
         {showHint && (
           <div className="mt-4 p-4 bg-yellow-50 rounded-lg">
             <p className="text-yellow-800">💡 Hint: {challenges[currentChallenge].hint}</p>
           </div>
         )}
-
         {isCorrect && currentChallenge < challenges.length - 1 && (
           <button
             onClick={nextChallenge}
