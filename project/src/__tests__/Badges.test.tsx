@@ -41,7 +41,6 @@ describe('Badges Component', () => {
 
   test('displays locked message for unearned badges', () => {
     render(<Badges earnedBadges={earnedBadges} />);
-    
     // Check if locked message appears for some badges
     expect(screen.getAllByText('🔒 Keep learning to unlock!').length).toBeGreaterThan(0);
   });
