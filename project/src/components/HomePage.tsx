@@ -11,7 +11,7 @@ function HomePage() {
         <p className="text-xl text-gray-600">Let's learn Spring Boot together in a fun way!</p>
       </div>
 
-     
+
       <div className="grid md:grid-cols-3 gap-6 mt-12">
         <div className="bg-white p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform duration-200">
          
